@@ -1,0 +1,96 @@
+%% start of file 'SWJTU_Thesis.sty'.
+%% Copyright 2015 
+%% Original Author Limin HUANG.
+%% 2015/01/30		v0.0, Begin of the projet, 		@Chengdu China
+%% 2015/12/08		v1.0, Release of the projet, 	@Grenoble, France
+%% 2020/06/01		v2.0, Revision by Hao WANG, 	@Chengdu, China
+%% 2024/05/28		v3.0, Revision by Pungjay, 	    @Chengdu, China
+
+% 请注意：本文件除了超链接颜色设置，其他使用的参数均已经定义好，如需增加宏包或更改其样式用户可以根据需要更改。
+
+% 超链接颜色设置（“调试版”是调试的时候使用，方便区分文本和超链接，导出最终论文版本前请使用回“正式版”）
+% 调试版
+%\hypersetup{colorlinks,linkcolor=red,citecolor=green,urlcolor=magenta}
+% 正式版
+\hypersetup{colorlinks=true,linkcolor=black,citecolor=black,urlcolor=black,pdfborder={0 0 0}}
+
+% 数学公式常用宏包（实现更多样的数学公式输入）
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb} % AMSLaTeX宏包, 用来排出更加漂亮的公式, 可以使用\eqref{*}而非(ref{*})来引用公式
+\usepackage{mathrsfs} % 不同于\mathcal or \mathfrak 之类的英文花体字体
+% \usepackage{mathtools}
+\usepackage{wasysym}  % 绘制版权部分的方框和打勾方框
+\usepackage{cases} % cases环境
+%\usepackage{theorem}
+\usepackage[amsmath,thmmarks]{ntheorem} % 定理类环境宏包，其中 amsmath 选项, 用来兼容 AMS LaTeX 的宏包. 与theorem不能同时使用.
+
+
+% 图片常用宏包（实现多种格式的调用）
+\usepackage{graphicx}
+%\usepackage{subfig}
+%\usepackage{subfigure}% Support for small, `sub' figures and tables
+\usepackage{float} 
+\usepackage{subfigure}
+\usepackage{subcaption}
+\usepackage{makecell}
+
+% 表格制作常用宏包
+
+\usepackage{multirow} % 表格中支持跨行
+
+\usepackage{dcolumn} % 表格中数字按小数点对齐
+\newcolumntype{d}[1]{D{.}{.}{#1}}
+
+\usepackage{booktabs} % 使用三线表：toprule，midrule，bottomrule
+
+\usepackage{longtable} % 使用长表格
+\AtBeginEnvironment{longtable}{\zihao{-5}} 
+
+\usepackage{threeparttable} % 附带脚注的表格
+
+\usepackage{threeparttablex} % 附带脚注的长表格
+\AtBeginEnvironment{tablenotes}{\zihao{-5}}
+
+% 图表题注格式宏包
+\usepackage{caption}
+%\captionsetup{labelformat=simple, labelsep=space, font=bf}
+%\captionsetup{labelformat=simple, labelsep=quad, labelfont=bf, textfont=normalfont}
+
+%将图表标签和标题改成黑体五号
+\DeclareCaptionLabelSeparator{twospace}{\ ~}
+\captionsetup{labelformat=simple, labelsep=twospace, font={sf,small}}
+
+% 算法宏包
+\usepackage{algorithmic}
+\usepackage[lined,boxed,ruled,algochapter]{algorithm2e} % algochapter算法按章编号
+\renewcommand{\algorithmcfname}{算法}
+
+% TeX系列标识的正确输入宏包（实现正确插入TeX相关的字符串）
+\usepackage{dtk-logos}
+
+% 列表制作常用宏包（用于调用小间距列表）
+\usepackage{paralist}
+
+% 外框宏包
+\usepackage{framed}
+
+% 引用文献宏包natbib
+\RequirePackage[super,square,comma,sort&compress]{natbib}   % 上标，方括号，逗号分隔，自动排序分类
+
+% 颜色控制宏包
+\usepackage{color,xcolor}
+\usepackage{colortbl} % 控制表格颜色
+
+% 无序列表、有序列表宏包
+\usepackage{enumerate} % 其后可接选项[a,A,i,I,1]
+\usepackage{enumitem}
+\setenumerate[1]{itemsep=0pt,partopsep=0pt,parsep=\parskip,topsep=3pt}
+\setitemize[1]{itemsep=0pt,partopsep=0pt,parsep=\parskip,topsep=3pt}
+\setdescription{itemsep=0pt,partopsep=0pt,parsep=\parskip,topsep=3pt}
+
+% 英文采用Times New Rome字体（建议把这个宏包放在最后避免发生宏包冲突）
+\usepackage{fontspec}
+\setmainfont{Times New Roman}
+% 不需要设置CJKmainfont，ctex 宏包已经很好的处理了
+% 不仅设置了粗体为黑体，斜体为楷体，还兼容了winfonts和adobefonts

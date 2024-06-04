@@ -1,0 +1,86 @@
+%===============================================
+%               西南交通大学研究生学位论文LaTeX模板
+%===============================================
+% !TEX program = XeLaTeX
+% 大部分的模板格式均在类文件（.cls）、样式文件（.sty）和配置文件（.cfg）中
+
+\documentclass[oneside,openany]{swjtuThesis} % 双面打印: twoside
+\usepackage{swjtuThesis}
+
+% 加载中英文封面信息
+\input{frontPart/coverInformation}
+
+\begin{document}
+
+% 将\textbf{\songti{xxx}}的宋体加粗效果减弱至与word的加粗效果相似
+\xeCJKsetup{EmboldenFactor=3}
+\setCJKfamilyfont{zhsong}{simsun.ttc}[AutoFakeBold]
+
+%----------------------------------------------------------
+% 封面生成（包括中、英文封面、版权协议以及硕（博）士主要工作简述）
+%----------------------------------------------------------
+
+\pdfbookmark[0]{封面}{Cover}
+\makecover
+
+%----------------------------------------------------------------------
+% 论文前言（包括中、英文摘要及目录，页码为罗马数字，在研究生论文目录中不显示摘要）
+%-----------------------------------------------------------------------
+
+\frontmatter
+
+% 页眉设置
+\pagenumbering{Roman}
+\thesispagestyle{-4}{西南交通大学\cDegree{}研究生学位论文}{第~\thepage~页}	
+
+% 插入中英文摘要
+\pdfbookmark[0]{中英文摘要}{Abstract}
+
+\include{frontPart/cAbstract} % 加载中文摘要
+\include{frontPart/eAbstract} % 加载英文摘要
+
+% 目录生成
+\pdfbookmark[0]{目录}{Content}
+\tableofcontents
+
+%-------------------------------------------------
+% 学位论文正文（包含各章节内容和结论，页码为阿拉伯数字）
+%-------------------------------------------------
+
+\mainmatter
+
+% 页眉设置
+\pagenumbering{arabic}
+\thesispagestyle{-4}{西南交通大学\cDegree{}研究生学位论文}{第~\thepage~页}	
+
+% 插入论文正文（第1章 - 第N章、结论）
+
+% 目前共有四个章节文件，用户可以在chapters/:文件夹中新建并添加chapter0X.tex文件
+\include{bodyPart/chapter01}
+\include{bodyPart/chapter02}
+\include{bodyPart/chapter03}
+\include{bodyPart/chapter04}
+% 插入结论
+\include{bodyPart/conclusion}
+
+%-------------------------------------------------------
+% 论文附录（包括致谢、参考文献、相关的数学推导和证明、工作列表）
+%-------------------------------------------------------
+
+% 插入致谢
+\include{behindPart/remerciement}
+
+% 插入参考文献
+
+\setlength{\bibsep}{3pt plus1pt minus1pt}   % 参考文献表条目间的间距
+\bibliographystyle{references/swjtuThesis}  % 参考文献列表的格式，swjtuThesis.bst格式文件参考国标文件GB/T 7714-2015制作
+\bibliography{references/ref}               % 加入参考文献，ref为存放参考文献的文件
+\addcontentsline{toc}{chapter}{参考文献}     % 将参考文献作为一级标题加入到目录
+
+% 插入附录
+\include{behindPart/appendixA}				% 测试数据、数学证明或者个人简介
+
+% 插入个人工作列表
+\include{behindPart/myWork}					% 攻读硕（博）士论文攻读期间取得的科研成果：论文、专利、项目等
+
+\end{document}
