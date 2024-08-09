@@ -19,7 +19,7 @@ LaTeX 使得论文的内容与格式相分离，用户只需要专注内容，�
 - `02_bodyPart/`：用户需要撰写的论文的正文部分（包括绪论、具体研究内容、结论、致谢），而参考文献列表是通过LaTeX命令自动生成的（见主文件`main.tex`）。
 - `03_behindPart/`：用户需要撰写的论文的结尾部分（附录(如须)、攻读硕士期间取得的成果）；
 - `figures/`：论文中的图片的文件夹，LaTeX 支持多种图片格式，如 .jpg、.png、.eps、.pdf 等，建议用户尽可能使用.pdf形式的矢量图；
-- `references/`：论文中的参考文献数据库的文件夹，其中的`ref_01.bib`、`ref_02.bib`是参考文献数据库，将论文中需要引用的所有文献的 BibTeX 格式复制粘贴到这里（建议通过[Google Scholar](https://scholar.google.com)查找或者 Zotero 软件搭配 Better BibTeX一键导出）。
+- `references/`：论文中的参考文献数据库的文件夹，其中的`ref_01.bib`、`ref_02.bib`是参考文献数据库，将论文中需要引用的所有文献的 BibTeX 格式复制粘贴到这里（建议通过[Google Scholar](https://scholar.google.com)查找或者 Zotero 软件搭配 Better BibTeX 插件一键导出）。
 - `delete-temp-files`：使用本地编译的编译方式时，双击运行即可一键删除每次编译后产生的临时缓存文件（使用在线编译的编译方式则不需要，因为缓存文件保存在云端）。
 
 ## 编译方式
@@ -67,6 +67,6 @@ swjtuThesis 模板有两种编译方式：在线编译，本地编译。不论�
 > 纸质版论文：
 > 请用户对`main.tex`主文件进行最终的编译之前，注释掉以下代码。再根据《范式》3.3节的要求通过Acrobat等PDF编辑器在合理的位置插入空白页，再进行整体双面打印，最后将带有作者和导师的手写签名的《独创性声明》及《使用授权》的纸质版插入，装订，即可得到纸质版论文。
 ```
-\includepdf{01_frontPart/statementMaster.pdf}
+\includepdf{01_frontPart/statement.pdf}
 \includepdf{01_frontPart/copyright.pdf}
 ```
