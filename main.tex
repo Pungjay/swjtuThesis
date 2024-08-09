@@ -1,0 +1,78 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                     swjtuThesis模板的主文件
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[oneside,openright]{swjtuThesis} % .cls文件
+\usepackage{swjtuThesis} % .sty文件
+% \usepackage{xxx,xxx,xxx,...} % 在.sty文件已导入了常见的必要宏包，如需额外添加请用户在此处添加！！！
+
+% 加载论文信息，用户需要填写自己的信息！！！
+\input{01_frontPart/thesisInformation}
+
+%---------------------------------------------------------------%
+%                           前置部分
+%---------------------------------------------------------------%
+
+\makeatletter
+\begin{document}
+
+% 中英文扉页
+\maketitlepage
+
+% 独创性声明，注意电子版论文、纸质版论文的获取方法（参考README.md文件）！！！
+\includepdf{01_frontPart/statement.pdf}
+
+% 版权使用授权，注意电子版论文、纸质版论文的获取方法（参考README.md文件）！！！
+\includepdf{01_frontPart/copyright.pdf}
+
+\setlength{\baselineskip}{20pt} % 从中文摘要开始，所有文字段落和标题行间距均取固定值20磅
+\pagenumbering{Roman} % 从中文摘要开始，将页码设置成罗马数字并开始编号  
+
+% 中英文摘要
+\include{01_frontPart/cAbstract}
+\include{01_frontPart/eAbstract}
+
+% 目录、图目录（如需）、表目录（如需）
+\listpagestyle % 目录、图目录、表目录的页眉页脚
+\tableofcontents
+\listoffigures
+\listoftables
+
+% 主要符号表（如需）
+\include{01_frontPart/symbol}
+
+% 缩略词表（如需）
+\include{01_frontPart/acronym}
+
+%---------------------------------------------------------------%
+%                           正文部分
+%---------------------------------------------------------------%
+
+\pagenumbering{arabic} % 从第1章第1页开始，将页码设置成阿拉伯数字并开始编号
+\mainpagestyle % 从第1章第1页及之后的部分的页眉页脚
+
+% 绪论、具体研究内容、结论
+\include{02_bodyPart/chapter_01}
+\include{02_bodyPart/chapter_02}
+\include{02_bodyPart/chapter_03}
+\include{02_bodyPart/chapter_04}
+
+% 致谢
+\include{02_bodyPart/acknowledgement}
+
+% 参考文献
+\bibliographystyle{swjtuThesis} % .bst文件
+\bibliography{references/ref_01,references/ref_02}
+\addcontentsline{toc}{chapter}{参考文献}
+
+%---------------------------------------------------------------%
+%                           结尾部分
+%---------------------------------------------------------------%
+
+% 附录（如须）
+\include{03_behindPart/appendix}
+
+% 攻读硕士期间取得的成果
+\include{03_behindPart/achievement}
+
+\end{document}

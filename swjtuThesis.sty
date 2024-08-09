@@ -1,0 +1,159 @@
+%% swjtuThesis.sty文件
+%% Copyright 2015 
+%% Original Author Limin HUANG.
+%% 2015/01/30		v0.0, Begin of the projet, 		@Chengdu China
+%% 2015/12/08		v1.0, Release of the projet, 	@Grenoble, France
+%% 2020/06/01		v2.0, Revision by Hao WANG, 	@Chengdu, China
+%% 2024/08/02		v3.0, Revision by Pungjay, 	    @Chengdu, China
+
+%---------------------------------------------------------------%
+%                公式、图片、表格、文献、算法、代码
+%---------------------------------------------------------------%
+
+% 公式宏包
+\RequirePackage{amsmath,amssymb,amsthm,mathtools}
+\RequirePackage[vvarbb,upint,slantedGreek]{newtxmath}
+\let\leq\leqslant % 将小于等于号的横线变成倾斜
+\let\geq\geqslant % 将大于等于号的横线变成倾斜
+\let\partial\uppartial % 将偏导数符号变为正体
+\let\oldsum\sum % 将求和的上下标固定为求和符号的一上一下的形式
+\renewcommand{\sum}{\oldsum\limits} 
+
+\renewcommand{\theequation}{\thechapter-\arabic{equation}} % （章-公式号）
+
+\g@addto@macro\normalsize{% 公式的段前、段后均为6磅
+  \setlength\abovedisplayskip{6pt}
+  \setlength\belowdisplayskip{6pt}
+  \setlength\abovedisplayshortskip{6pt}
+  \setlength\belowdisplayshortskip{6pt}
+}
+
+% 图片宏包
+\RequirePackage{graphicx}
+\RequirePackage{subcaption}
+
+% 表格宏包
+\RequirePackage{multirow} % 表格中支持合并行
+\RequirePackage{multicol} % 表格中支持合并列
+
+\RequirePackage{makecell} % 表格中的内容支持手动换行
+\RequirePackage{array} % 通过指定列宽，使得表格中的内容支持自动换行
+
+\RequirePackage{dcolumn} % 表格中数字按小数点对齐
+\newcolumntype{d}[1]{D{.}{.}{#1}}
+
+\RequirePackage{booktabs} % 三线表：提供命令\toprule，\midrule，\bottomrule
+
+\RequirePackage{longtable} % 长表格
+
+\RequirePackage{threeparttable} % 附带脚注的表格
+\RequirePackage{threeparttablex} % 附带脚注的长表格
+
+\RequirePackage{tabularx} % 自伸缩适应指定宽度的表格
+
+\renewcommand{\arraystretch}{1.2}
+
+% 图表的题注
+\RequirePackage{caption}
+\captionsetup{labelformat=simple, labelsep=quad, font=small}
+\captionsetup{width=\textwidth - 50pt} % 图表标题超过一行时左右缩进4字符
+\renewcommand{\thefigure}{\thechapter-\arabic{figure}}
+\renewcommand{\thetable}{\thechapter-\arabic{table}}
+\captionsetup[figure]{aboveskip=0pt, belowskip=6pt}
+\captionsetup[table]{aboveskip=6pt, belowskip=0pt}
+
+% 表格内所有字号为五号，注意仅对tabular、tabular环境起作用，其他例如longtable需要手动设置字号（通过\small{...}或\zihao{5}{...}命令）
+\RequirePackage{etoolbox}
+\AtBeginEnvironment{tabular}{\zihao{5}}
+\AtBeginEnvironment{tabularx}{\zihao{5}}
+
+% 文献宏包
+\RequirePackage[super,square,comma,sort&compress]{natbib}   % 文中的引用格式：上标，方括号，逗号分隔，自动排序分类
+\renewcommand\bibfont{\zihao{5}}
+\setlength{\bibsep}{5pt plus1pt minus1pt} % 参考文献表条目间的间距
+\renewcommand\@biblabel[1]{[#1]\hfill} % 参考文献列表的标签左对齐
+
+% 算法宏包
+\RequirePackage{algorithmic}
+\RequirePackage[lined,boxed,ruled,algochapter]{algorithm2e} % algochapter算法按章编号
+\renewcommand{\algorithmcfname}{算法}
+
+% 代码宏包
+\RequirePackage{listings}
+
+%---------------------------------------------------------------%
+%                             其他
+%---------------------------------------------------------------%
+
+% 支持插入pdf页面（用于插入《独创性声明》和《使用版权》）
+\RequirePackage{pdfpages}
+
+% 目录格式：引导点、字体和缩进
+\renewcommand{\contentsname}{目\quad 录}
+\makeatletter
+\def\@dotsep{0.7}
+\renewcommand*\l@chapter{\heiti\@dottedtocline{0}{0em}{2em}}
+\renewcommand*\l@section{\songti\@dottedtocline{1}{2em}{2em}}
+\renewcommand*\l@subsection{\songti\@dottedtocline{2}{4.1em}{2em}}
+
+% 图目录格式：标题为“图目录”，目录内容显示为“图xxx”
+\renewcommand{\listfigurename}{图目录}
+\let\oldlistoffigures\listoffigures
+\renewcommand{\listoffigures}{
+  \let\oldnumberline\numberline
+  \renewcommand{\numberline}{\figurename~\oldnumberline}
+  \oldlistoffigures%
+  \let\numberline\oldnumberline
+}
+
+% 表目录格式：标题为“图目录”，目录内容显示为“表xxx”
+\renewcommand{\listtablename}{表目录}
+\let\oldlistoftables\listoftables
+\renewcommand{\listoftables}{
+  \let\oldnumberline\numberline
+  \renewcommand{\numberline}{\tablename~\oldnumberline}
+  \oldlistoftables%
+  \let\numberline\oldnumberline
+}
+
+% 脚注（脚注序号带圈文字、取消脚注的上标格式）
+\RequirePackage{pifont}
+
+\newcommand*{\circnum}[1]{%
+    \expandafter\@circnum\csname c@#1\endcsname
+}
+\newcommand*{\@circnum}[1]{%
+    \ifnum#1<1 %
+        \@ctrerr
+    \else
+        \ifnum#1>20 %
+            \@ctrerr
+        \else
+            \ding{\the\numexpr 171+(#1)\relax}%
+        \fi
+    \fi
+}
+
+\RequirePackage{xpatch}
+\xpatchcmd\@makefntext
+{{\hss\@makefnmark}}
+{{\hss\@makefnmark@nosuperscript}\space\hangindent=2em}
+{}{\fail}
+\def\@makefnmark@nosuperscript{\lower .1ex \hbox{\normalfont\@thefnmark}}
+\renewcommand*{\thefootnote}{\circnum{footnote}}
+
+% 颜色控制宏包
+\RequirePackage{color,xcolor} % 支持论文中的红色等字体颜色
+
+% 隐藏所有引文、交叉引用、链接的颜色和边框
+\hypersetup{hidelinks}
+
+% 外框宏包
+\RequirePackage{framed}
+
+% 列表（无序列表、有序列表）宏包
+\RequirePackage{enumerate} % 其后可接选项[a,A,i,I,1]
+\RequirePackage{enumitem}
+\setenumerate[1]{itemsep=0pt,partopsep=0pt,parsep=\parskip,topsep=3pt,itemindent=1em}
+\setitemize[1]{itemsep=0pt,partopsep=0pt,parsep=\parskip,topsep=3pt,itemindent=0.5em}
+\setdescription{itemsep=0pt,partopsep=0pt,parsep=\parskip,topsep=3pt}
