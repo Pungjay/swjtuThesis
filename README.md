@@ -53,12 +53,22 @@ swjtuThesis 模板有两种编译方式：在线编译，本地编译。不论�
 ```
 \include{02_bodyPart/chapter_0X}
 ```
-1. 为了方便用户按类型分类文献，本文目前设置了2个参考文献数据库：`ref_01.bib`、`ref_02.bib`。用户可以设置添加.bib文件，也可重命名.bib文件：通过记事本软件生成.txt文件后修改后缀为.bib后上传，同时在主文件中需要修改以下代码：
+3. 为了方便用户按类型分类文献，本文目前设置了2个参考文献数据库：`ref_01.bib`、`ref_02.bib`。用户可以设置添加.bib文件，也可重命名.bib文件：通过记事本软件生成.txt文件后修改后缀为.bib后上传，同时在主文件中需要修改以下代码：
 ```
 \bibliography{references/ref_01,references/ref_02}
 ```
-1. 本模板未能设置文献在论文中的上标引用与水平引用的混合模式，只含有上标引用。因此，应避免“由文献[4, 7-10]可知”的水平引用的写法，可以用（作者）等加上标引用的写法代替。
-
+4. 本模板未能设置文献在论文中的上标引用与水平引用的混合模式，只含有上标引用。因此，应避免“由文献[4, 7-10]可知”的水平引用的写法，可以用（作者）等加上标引用的写法代替。
+5. 文集和会议论文同属于析出型文献，由于GBT7714-2015中对于该类文献在文献列表中显示的是[M]//和][C]//，但考虑到文集已很少用而会议论文却常用，因而本模板的参考文献列表样式将其改成显示为[M].和][C].改动前后的效果为：
+```
+白书农. 植物开花研究[M]//李承森. 植物科学进展. 北京: 高等教育出版社, 1998: 146-163.
+白书农. 植物开花研究[M]. 李承森. 植物科学进展. 北京: 高等教育出版社, 1998: 146-163.
+Rathgeb A, Ma L, Tran M, et al. Extended depth of field imaging for mosaic hyperspectral images
+[C]//Conference on Medical Imaging-Digital and Computational Pathology. San Diego, USA,
+2023: 283-291.
+Rathgeb A, Ma L, Tran M, et al. Extended depth of field imaging for mosaic hyperspectral images
+[C]. Conference on Medical Imaging-Digital and Computational Pathology. San Diego, USA,
+2023: 283-291.
+```
 ## 注意事项
 
 > 电子版论文：
