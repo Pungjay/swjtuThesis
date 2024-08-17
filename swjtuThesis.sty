@@ -59,8 +59,8 @@
 \captionsetup{width=\textwidth - 50pt} % 图表标题超过一行时左右缩进4字符
 \renewcommand{\thefigure}{\thechapter-\arabic{figure}}
 \renewcommand{\thetable}{\thechapter-\arabic{table}}
-\captionsetup[figure]{aboveskip=0pt, belowskip=6pt}
-\captionsetup[table]{aboveskip=6pt, belowskip=0pt}
+\captionsetup[figure]{aboveskip=6pt, belowskip=0pt}
+\captionsetup[table]{aboveskip=0pt, belowskip=6pt}
 
 % 表格内所有字号为五号，注意仅对tabular、tabular环境起作用，其他例如longtable需要手动设置字号（通过\small{...}或\zihao{5}{...}命令）
 \RequirePackage{etoolbox}
@@ -145,8 +145,9 @@
 % 颜色控制宏包
 \RequirePackage{color,xcolor} % 支持论文中的红色等字体颜色
 
-% 隐藏所有引文、交叉引用、链接的颜色和边框
-\hypersetup{hidelinks}
+% 引文、交叉引用、链接
+\hypersetup{hidelinks} % 隐藏颜色和边框
+\urlstyle{rm} % 设置链接的字体为Times New Roman
 
 % 外框宏包
 \RequirePackage{framed}
