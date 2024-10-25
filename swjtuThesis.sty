@@ -13,11 +13,6 @@
 % 公式宏包
 \RequirePackage{amsmath,amssymb,amsthm,mathtools}
 \RequirePackage[vvarbb,upint,slantedGreek]{newtxmath}
-\let\leq\leqslant % 将小于等于号的横线变成倾斜
-\let\geq\geqslant % 将大于等于号的横线变成倾斜
-\let\partial\uppartial % 将偏导数符号变为正体
-\let\oldsum\sum % 将求和的上下标固定为求和符号的一上一下的形式
-\renewcommand{\sum}{\oldsum\limits} 
 
 \renewcommand{\theequation}{\thechapter-\arabic{equation}} % （章-公式号）
 
